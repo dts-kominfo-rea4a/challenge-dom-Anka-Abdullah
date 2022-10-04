@@ -52,6 +52,12 @@
       outline: none;
       border: 1.5px solid rgb(0, 221, 255);
     }
+
+    #todo-output li {
+      list-style-type: none;
+      text-align: left;
+      margin-top: 10px;
+    }
   </style>
   <title>Challenge - DOM</title>
 </head>
@@ -87,8 +93,8 @@
     // Jangan ubah cara deklarasi fungsinya, cukup isi saja
     function fnClickHandler(toDoItem) {
       input.push(document.getElementById("todo-input").value)
-      input.map(e => {
-        output += `<li>${e}</li>`
+      input.map((e, i) => {
+        output += `<li>${i + 1}.  ${e}</li> `
       })
       document.getElementById("todo-output").innerHTML = output
       output = ''
@@ -101,6 +107,7 @@
     // TODO: register event onkeypress / addEventListener untuk input
     // sehingga saat di input ditekan enter akan menjalankan fungsi fnClickHandler juga
     function handleKeyPress(e) {
+      console.log(e);
       var key = e.keyCode || e.which;
       if (key == 13) {
         fnClickHandler();
